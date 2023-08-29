@@ -1,0 +1,16 @@
+:root{
+ --lightblue: #dbecf4;
+}
+.max-height-300 {
+    max-height: 490px;
+    
+  }
+
+.btn-lightBlue{
+  background-color: var(--lightblue);
+}
+
+
+.bg-lightBlue{
+  background-color: var(--lightblue);
+}
