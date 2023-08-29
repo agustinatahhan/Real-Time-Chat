@@ -51,11 +51,16 @@ export const Chat = () => {
         timestamp: new Date().getTime(),
       };
       setMessages((messages) => [...messages, newMessage]);
-      dispatch(postMessage(message, nickname));
-      
-      messagesContainerRef.current.scrollTop = messagesContainerRef.current.scrollHeight;
-      console.log( messagesContainerRef.current.scrollTop)
-      setMessage("");
+      const prevScrollHeight = messagesContainerRef.current.scrollHeight;
+
+      setTimeout(() => {
+        dispatch(postMessage(message, nickname));
+        setMessage("");
+
+        requestAnimationFrame(() => {
+          messagesContainerRef.current.scrollTop = prevScrollHeight;
+        });
+      }, 0);
     } else {
       alert("Para enviar mensajes debes establecer un nombre");
     }
